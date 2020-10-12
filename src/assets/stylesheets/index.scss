@@ -1,15 +1,50 @@
-@import  "./css_reset.scss";
+@import "./css_reset.scss";
+@import "./header.scss";
+@import "./form.scss";
+@import "./card.scss";
 
-html, body {
-    font-size: 16px;
+html,
+body {
+  font-size: 16px;
+  color: #172b4d;
+  line-height: 1.5;
+}
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
-*,*::before, *::after {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-a, button {
-    cursor: pointer;
+a {
+  color: #172b4d !important;
+  text-decoration: none;
 }
 
+a,
+button {
+  cursor: pointer;
+}
 
+input,
+button {
+  outline: 0;
+}
+
+.loader_wrapper {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+
+  .segment {
+    width: 100%;
+    height: 90%;
+    
+    border: none !important;
+    box-shadow: none !important;
+  }
+}

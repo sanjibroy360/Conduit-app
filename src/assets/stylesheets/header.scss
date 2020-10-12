@@ -1,0 +1,46 @@
+.container .ui.secondary.pointing.menu {
+  border: none;
+}
+
+.active_page {
+  border-bottom: 2.25px solid rgb(187, 185, 185);
+  background-color: rgba(241, 238, 238, 0.24);
+  font-weight: bold;
+//   box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.849),
+//     -3px -3px 6px rgb(247, 244, 244);
+//   border-radius: 0.35rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 0rem;
+  margin-bottom: 6rem;
+
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .menu {
+    text-align: right;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.15rem;
+    li {
+      padding: 0.25rem 0.5rem;
+    }
+  }
+
+  .non_auth_menu {
+    flex-basis: calc(100% / 3.9);
+  }
+
+  .auth_menu {
+    flex-basis: calc(100% / 3);
+  }
+}
