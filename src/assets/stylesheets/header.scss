@@ -6,9 +6,9 @@
   border-bottom: 2.25px solid rgb(187, 185, 185);
   background-color: rgba(241, 238, 238, 0.24);
   font-weight: bold;
-//   box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.849),
-//     -3px -3px 6px rgb(247, 244, 244);
-//   border-radius: 0.35rem;
+  //   box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.849),
+  //     -3px -3px 6px rgb(247, 244, 244);
+  //   border-radius: 0.35rem;
 }
 
 .nav {
@@ -41,6 +41,6 @@
   }
 
   .auth_menu {
-    flex-basis: calc(100% / 3);
+    flex-basis: calc(100% / 2.5);
   }
 }

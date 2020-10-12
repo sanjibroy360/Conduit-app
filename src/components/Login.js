@@ -1,13 +1,15 @@
-import React,{useState} from "react";
+import React,{useState, useContext} from "react";
 import { useHistory } from "react-router-dom";
 import { Formik } from "formik";
 import { Button, Form, Segment } from "semantic-ui-react";
 import InputBox from "./InputBox";
 import axios from "axios";
 import { toast } from "react-toastify";
+import UserContext from "../context/UserContext";
 
 function Login({ setIsLoggedIn }) {
   let history = useHistory();
+  let context = useContext(UserContext);
   let [passwordPreview, setPasswordPreview] = useState(false);
 
   return (
@@ -41,6 +43,7 @@ function Login({ setIsLoggedIn }) {
                 localStorage.setItem("authToken", user.token);
                 setIsLoggedIn(true);
                 setSubmitting(false);
+                context.setUserInfo(user);
                 toast.success(`${user.username} is logged in sucessfuly.`);
                 return history.push("/");
               })
