@@ -1,0 +1,11 @@
+.dialog_overlay {
+     background: rgba(0,0,0,0.5);
+}
+[data-reach-dialog-content] {
+    width: 65vw !important;
+    padding: 2rem 4rem !important;
+}
+
+p {
+    margin: 0 !important;
+}

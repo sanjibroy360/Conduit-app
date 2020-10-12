@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import { ToastContainer } from "react-toastify";
 import UserContext from "./context/UserContext";
 import "react-toastify/dist/ReactToastify.css";
+import NewArticle from "./components/NewArticle";
 
 axios.defaults.baseURL = "https://mighty-oasis-08080.herokuapp.com/api/";
 axios.defaults.headers.post["Content-Type"] = `application/json`;
@@ -49,6 +50,7 @@ function App() {
             exact
             render={() => <Login setIsLoggedIn={setIsLoggedIn} />}
           />
+          <Route path="/new-post" component={NewArticle}/>
         </Switch>
         <ToastContainer
           className="toast"

@@ -22,7 +22,7 @@ function Tabs({ userInfo }) {
     <ul className={context.userInfo ? "menu auth_menu" : "menu non_auth_menu"}>
       {tabs.map((menu) => {
         return (
-          <NavLink activeClassName="active_page" to={`${menu.link}`}>
+          <NavLink activeClassName="active_page" to={`${menu.link}`} exact={true} >
             <li key={menu.menuItem}>
               <nobr>{menu.menuItem}</nobr>
             </li>

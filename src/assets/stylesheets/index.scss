@@ -2,12 +2,15 @@
 @import "./header.scss";
 @import "./form.scss";
 @import "./card.scss";
+@import "./article.scss";
+@import "./dialog.scss";
 
 html,
 body {
   font-size: 16px;
   color: #172b4d;
   line-height: 1.5;
+  font-family: medium-content-title-font, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 .container {
   max-width: 1280px;
