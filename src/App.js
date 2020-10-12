@@ -36,7 +36,7 @@ function App() {
     <div className="container">
       <Header userInfo={userInfo}/>
       <Switch>
-        <Route path="/home"  exact component={Articles} /> 
+        <Route path="/"  exact component={Articles} /> 
         <Route
           path="/sign-up"
           exact
@@ -47,7 +47,7 @@ function App() {
           exact
           render={() => <Login setIsLoggedIn={setIsLoggedIn} />}
         />
-        {/* <Route path="/articles" exact component={Articles} /> */}
+        
       </Switch>
       <ToastContainer
           className="toast"

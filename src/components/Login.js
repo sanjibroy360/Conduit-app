@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { useHistory } from "react-router-dom";
 import { Formik } from "formik";
 import { Button, Form, Segment } from "semantic-ui-react";
@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 
 function Login({ setIsLoggedIn }) {
   let history = useHistory();
+  let [passwordPreview, setPasswordPreview] = useState(false);
 
   return (
     <div className="form_wrapper">
@@ -29,6 +30,8 @@ function Login({ setIsLoggedIn }) {
             }
             return errors;
           }}
+          validateOnBlur={false}
+          validateOnChange={false}
           onSubmit={(values, { setSubmitting }) => {
             axios
               .post("/users/login", {
@@ -39,7 +42,7 @@ function Login({ setIsLoggedIn }) {
                 setIsLoggedIn(true);
                 setSubmitting(false);
                 toast.success(`${user.username} is logged in sucessfuly.`);
-                return history.push("/home");
+                return history.push("/");
               })
               .catch((error) => {
                 let statusCode = error.response.status;
@@ -50,7 +53,9 @@ function Login({ setIsLoggedIn }) {
                 }
 
                 return setSubmitting(false);
-              });
+              })
+            
+              
           }}
         >
           {({
@@ -74,9 +79,11 @@ function Login({ setIsLoggedIn }) {
                 errorMessage={errors.email}
               />
 
+              <p onClick={()=> setPasswordPreview(!passwordPreview)}>icon</p>
+
               <InputBox
                 name={"password"}
-                type="password"
+                type={passwordPreview? "text": "password"}
                 label={"Password"}
                 value={values.password}
                 handleInput={handleChange}
@@ -95,7 +102,8 @@ function Login({ setIsLoggedIn }) {
                     fluid
                     size="large"
                     primary
-                    disabled={!isValid}
+                    disabled={(!isValid || !values.email || !values.password)}
+                    
                   >
                     <Button.Content visible>Log In</Button.Content>
                   </Button>

@@ -28,7 +28,7 @@ function Articles() {
 
   return (
     <div>
-      <ul>
+      <ul className="cards_wrapper">
         {articles.map((article) => {
           return (
             <li>

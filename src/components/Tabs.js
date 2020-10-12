@@ -5,14 +5,14 @@ import { NavLink } from "react-router-dom";
 function Tabs({userInfo}) {
 
 let authTabs = [
-  { menuItem: "Home", link: "/home" },
+  { menuItem: "Home", link: "/" },
   { menuItem: "Feed", link: "/feed" },
   { menuItem: "New Post", link: "/new-post" },
   { menuItem: "Settings", link: "/settings" },
-  { menuItem: `${userInfo?.username}`, link: "/username" },
+  { menuItem: `${userInfo?.username||"user"}`, link: "/username" },
 ];
 let nonAuthTabs = [
-  { menuItem: "Home", link: "/home" },
+  { menuItem: "Home", link: "/" },
   { menuItem: "Sign In", link: "/login" },
   { menuItem: "Sign Up", link: "/sign-up" },
 ];

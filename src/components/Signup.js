@@ -22,6 +22,8 @@ function Signup({ setIsLoggedIn }) {
         <Formik
           initialValues={{ email: "", password: "", username: "" }}
           validate={(values) => validateForm(values)}
+          validateOnBlur={false}
+          validateOnChange={false}
           onSubmit={(values, { setSubmitting }) => {
             axios
               .post("/users", {
@@ -33,10 +35,17 @@ function Signup({ setIsLoggedIn }) {
                 toast.success(
                   `${user.username} account has been created successfuly`
                 );
+
                 toast.success(`${user.username} is logged in sucessfuly.`);
-                return history.push("/home");
+                return history.push("/");
               })
-              .catch((error) => toast.error("Something went wrong!"));
+              .catch((error) => toast.error("Something went wrong!"))
+              // .finally(() => {
+              //   values.email = "";
+              //   values.password = "";
+              //   values.username = "";
+              //   return;
+              // });
           }}
         >
           {({
@@ -98,7 +107,7 @@ function Signup({ setIsLoggedIn }) {
                     fluid
                     size="large"
                     primary
-                    disabled={!isValid}
+                    disabled={(!isValid || !values.email || !values.username || !values.password)}
                   >
                     <Button.Content visible>Sign Up</Button.Content>
                   </Button>
