@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useContext} from "react";
 import { useHistory } from "react-router-dom";
 import { Formik } from "formik";
 import { Button, Form, Segment, Message } from "semantic-ui-react";
@@ -6,9 +6,11 @@ import InputBox from "./InputBox";
 import validateForm from "../utils/validateForm";
 import axios from "axios";
 import { toast } from "react-toastify";
+import UserContext from "../context/UserContext";
 
 function Signup({ setIsLoggedIn }) {
   let history = useHistory();
+  let context = useContext(UserContext);
   let passwordRequirement = [
     "Password should contain at-least one uppercase and one lowercase letter",
     "Password should contain at-least one number",
@@ -32,6 +34,7 @@ function Signup({ setIsLoggedIn }) {
               .then(({ data: { user } }) => {
                 localStorage.setItem("authToken", user.token);
                 setIsLoggedIn(true);
+                context.setUserInfo(user);
                 toast.success(
                   `${user.username} account has been created successfuly`
                 );

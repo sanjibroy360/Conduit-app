@@ -6,6 +6,7 @@ import axios from "axios";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import { ToastContainer } from "react-toastify";
+import UserContext from "./context/UserContext";
 import "react-toastify/dist/ReactToastify.css";
 
 axios.defaults.baseURL = "https://mighty-oasis-08080.herokuapp.com/api/";
@@ -14,7 +15,7 @@ axios.defaults.headers.post["Content-Type"] = `application/json`;
 function App() {
   let [userInfo, setUserInfo] = useState(null);
   let [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+
   useEffect(() => {
     if (localStorage.authToken) {
       axios
@@ -34,22 +35,22 @@ function App() {
   }, []);
   return (
     <div className="container">
-      <Header userInfo={userInfo}/>
-      <Switch>
-        <Route path="/"  exact component={Articles} /> 
-        <Route
-          path="/sign-up"
-          exact
-          render={() => <Signup setIsLoggedIn={setIsLoggedIn} />}
-        />
-        <Route
-          path="/login"
-          exact
-          render={() => <Login setIsLoggedIn={setIsLoggedIn} />}
-        />
-        
-      </Switch>
-      <ToastContainer
+      <UserContext.Provider value={{ userInfo, setUserInfo }}>
+        <Header userInfo={userInfo} />
+        <Switch>
+          <Route path="/" exact component={Articles} />
+          <Route
+            path="/sign-up"
+            exact
+            render={() => <Signup setIsLoggedIn={setIsLoggedIn} />}
+          />
+          <Route
+            path="/login"
+            exact
+            render={() => <Login setIsLoggedIn={setIsLoggedIn} />}
+          />
+        </Switch>
+        <ToastContainer
           className="toast"
           position="top-right"
           autoClose={3000}
@@ -61,6 +62,7 @@ function App() {
           draggable
           pauseOnHover
         />
+      </UserContext.Provider>
     </div>
   );
 }

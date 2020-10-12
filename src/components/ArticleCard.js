@@ -9,7 +9,6 @@ function ArticleCard({ article }) {
       <Card link>
         <Card.Content>
           <Image size="large" src={imageUrl} />
-          {/* <Image floated="right" size="huge" avatar src={article.author.image} /> */}
           <Card.Header>{article.title.slice(0, 50)}</Card.Header>
           <Card.Meta>- By {article.author.username}</Card.Meta>
           <Card.Description>
