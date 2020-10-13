@@ -4,6 +4,9 @@
 @import "./card.scss";
 @import "./article.scss";
 @import "./dialog.scss";
+@import "./editor.scss";
+@import "./new_article.scss";
+@import "./profile.scss";
 
 html,
 body {
@@ -51,3 +54,6 @@ button {
     box-shadow: none !important;
   }
 }
+
+
+

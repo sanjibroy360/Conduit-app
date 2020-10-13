@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Dialog, DialogOverlay } from "@reach/dialog";
 import VisuallyHidden from "@reach/visually-hidden";
-import ArticleContent from "./ArticleContent";
+import ArticleModal from "./ArticleModal";
 
 function Article({ showDialog, closeModal, article }) {
   let cardRef = useRef();
@@ -19,7 +19,7 @@ function Article({ showDialog, closeModal, article }) {
               <span aria-hidden>×</span>
             </button>
           </div>
-          <ArticleContent article={article} />
+          <ArticleModal article={article} />
         </Dialog>
       </DialogOverlay>
     </div>

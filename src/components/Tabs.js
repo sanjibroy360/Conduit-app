@@ -9,7 +9,7 @@ function Tabs({ userInfo }) {
     { menuItem: "Feed", link: "/feed" },
     { menuItem: "New Post", link: "/new-post" },
     { menuItem: "Settings", link: "/settings" },
-    { menuItem: `${userInfo?.username || "user"}`, link: "/username" },
+    { menuItem: `${userInfo?.username || "user"}`, link: `/profile/${userInfo?.username}` },
   ];
   let nonAuthTabs = [
     { menuItem: "Home", link: "/" },
