@@ -1,24 +1,29 @@
 import React, { Component, useEffect, useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Router, Switch } from "react-router-dom";
 import Articles from "./components/Articles";
 import Header from "./components/Header";
 import axios from "axios";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import UserContext from "./context/UserContext";
 import "react-toastify/dist/ReactToastify.css";
 import NewArticle from "./components/NewArticle";
+import SingleArticle from "./components/SingleArticle";
+import Loading from "./components/Loader";
+import Profile from "./components/Profile";
 
 axios.defaults.baseURL = "https://mighty-oasis-08080.herokuapp.com/api/";
 axios.defaults.headers.post["Content-Type"] = `application/json`;
 
 function App() {
   let [userInfo, setUserInfo] = useState(null);
+  let [isLoading, setIsLoading] = useState(false);
   let [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     if (localStorage.authToken) {
+      setIsLoading(true);
       axios
         .get("/user", {
           headers: {
@@ -27,13 +32,22 @@ function App() {
         })
         .then(({ data: { user } }) => {
           setUserInfo(user);
+          setIsLoading(false);
           return setIsLoggedIn(true);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          setIsLoading(false);
+          toast.error("Something went wrong!");
+        });
     } else {
       setIsLoggedIn(false);
     }
   }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div className="container">
       <UserContext.Provider value={{ userInfo, setUserInfo }}>
@@ -50,7 +64,9 @@ function App() {
             exact
             render={() => <Login setIsLoggedIn={setIsLoggedIn} />}
           />
-          <Route path="/new-post" component={NewArticle}/>
+          <Route path="/new-post" component={NewArticle} />
+          <Route path="/article/:slug" component={SingleArticle} />
+          <Route path="/profile/:username" component={Profile} />
         </Switch>
         <ToastContainer
           className="toast"

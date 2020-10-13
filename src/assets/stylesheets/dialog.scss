@@ -1,11 +1,61 @@
 .dialog_overlay {
-     background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+[data-reach-dialog-overlay] {
+  z-index: 20;
 }
 [data-reach-dialog-content] {
-    width: 65vw !important;
-    padding: 2rem 4rem !important;
+  width: 45vw !important;
+  padding: 2rem 4rem !important;
 }
 
 p {
-    margin: 0 !important;
+  margin: 0 !important;
+}
+
+.article_modal_wrapper {
+  width: 99% !important;
+  .article_desc {
+    margin-bottom: 2rem !important;
+  }
+  margin: 0 auto;
+  p {
+    line-height: 1.75;
+    font-size: 1.2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: normal;
+  }
+
+  .article_header {
+    margin: 1.5rem 0rem;
+    display: flex;
+    
+    justify-content: flex-start;
+
+    align-items: center;
+    .avatar {
+      margin-right: 1rem;
+      width: 3rem !important;
+      height: 3rem !important;
+      img {
+        width: 100% !important;
+        border-radius: 50%;
+      }
+    }
+
+    .article_info {
+      p {
+        flex-basis: 65%;
+        font-size: 1rem;
+      }
+      .date {
+        font-size: 0.975rem;
+        color: rgba(117, 117, 117, 1);
+      }
+    }
+  }
 }

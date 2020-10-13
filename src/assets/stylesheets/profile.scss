@@ -1,0 +1,32 @@
+.articles_list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  li {
+    margin: 1rem;
+  }
+}
+
+.profile_header {
+  width: 44%;
+  margin: 0 auto;
+  min-height: 38vh;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  p {
+    font-size: 1.75rem;
+    padding: 1rem 0rem;
+  }
+  .avatar {
+    width: 10rem;
+    height: 10rem;
+    margin-right: 3.5rem;
+    img {
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
+}
+

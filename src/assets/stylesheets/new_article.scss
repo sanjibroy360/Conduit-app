@@ -1,0 +1,15 @@
+.create_article_form {
+  max-width: 90%;
+  margin: 0 auto;
+  .ui.segment {
+    padding: 4rem 3rem 3rem !important;
+    .ui.form .field {
+        font-size: 1.2rem;
+    }
+  }
+}
+.publish_btn_wrapper {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
